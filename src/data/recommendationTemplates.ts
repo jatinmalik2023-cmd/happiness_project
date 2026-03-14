@@ -1,0 +1,147 @@
+export interface RecommendationTemplate {
+  category: string;
+  titleTemplate: string;
+  descriptionTemplate: string;
+  condition: (themes: string[], subcats: string[]) => boolean;
+  priority: 'high' | 'medium' | 'low';
+  specificActionTemplates: string[];
+}
+
+export const recommendationTemplates: RecommendationTemplate[] = [
+  {
+    category: 'Career Alignment',
+    titleTemplate: 'Explore roles that combine {topPhrase1} and {topPhrase2}',
+    descriptionTemplate: 'Look for roles where you can apply {topPhrase1} alongside {topPhrase2}. The closer a role aligns with all four dimensions, the more fulfilled you\'ll feel.',
+    condition: () => true,
+    priority: 'high',
+    specificActionTemplates: ['Search for job listings mentioning {topPhrase1} and {topPhrase2}', 'Reach out to people working at this intersection', 'Update your resume to highlight your unique combination'],
+  },
+  {
+    category: 'Skill Development',
+    titleTemplate: 'Deepen your skills in {topPhrase1}',
+    descriptionTemplate: 'Invest in deliberate practice in {topPhrase1}. Mastery in your Ikigai zone creates exponential returns.',
+    condition: () => true,
+    priority: 'high',
+    specificActionTemplates: ['Find a course or workshop on {topPhrase1}', 'Practice {topPhrase1} for 30 minutes daily', 'Find a mentor who excels in {topPhrase1}'],
+  },
+  {
+    category: 'Creative Expression',
+    titleTemplate: 'Start writing {userWritingPhrase} regularly',
+    descriptionTemplate: 'Set aside dedicated time for {userWritingPhrase}. Consistent writing is the most important habit for any aspiring writer.',
+    condition: (_, subcats) => subcats.some(s => ['creative_writing', 'fiction_writing', 'nonfiction_writing', 'screenwriting', 'content_marketing'].includes(s)),
+    priority: 'high',
+    specificActionTemplates: ['Write 500 words every morning', 'Join a writing group for feedback', 'Submit a piece to a publication within 3 months'],
+  },
+  {
+    category: 'Technology',
+    titleTemplate: 'Build a project with {userTechPhrase}',
+    descriptionTemplate: 'Grow your {userTechPhrase} skills by building something real that combines your technical interests with other passions.',
+    condition: (_, subcats) => subcats.some(s => ['web_development', 'mobile_development', 'software_engineering', 'ai_ml', 'game_development'].includes(s)),
+    priority: 'high',
+    specificActionTemplates: ['Start a personal project combining {userTechPhrase} with other interests', 'Contribute to open-source related to {userTechPhrase}', 'Build a portfolio showcasing your work'],
+  },
+  {
+    category: 'Teaching & Sharing',
+    titleTemplate: 'Start teaching {userTeachPhrase}',
+    descriptionTemplate: 'You have a gift for {userTeachPhrase}. Teaching deepens understanding and creates impact. Start with a workshop, video, or blog post.',
+    condition: (themes, subcats) => themes.includes('teaching') || subcats.some(s => ['children_education', 'online_teaching', 'mentoring_coaching', 'adult_training'].includes(s)),
+    priority: 'high',
+    specificActionTemplates: ['Create a free mini-course on {userTeachPhrase}', 'Volunteer to teach at a community center', 'Start a YouTube channel sharing your knowledge'],
+  },
+  {
+    category: 'Social Impact',
+    titleTemplate: 'Volunteer your skills for {userHelpPhrase}',
+    descriptionTemplate: 'Channel your desire to help through {userHelpPhrase}. Volunteering grounds your Ikigai in real-world impact.',
+    condition: (themes, subcats) => themes.includes('helping') || themes.includes('social_justice') || subcats.some(s => ['social_work', 'volunteering', 'community_building', 'activism'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Find a nonprofit aligned with {userHelpPhrase}', 'Dedicate 4 hours/month to volunteering', 'Connect with others passionate about {userHelpPhrase}'],
+  },
+  {
+    category: 'Nature & Impact',
+    titleTemplate: 'Connect your work to {userNaturePhrase}',
+    descriptionTemplate: 'Your connection to {userNaturePhrase} is a powerful source of purpose. Look for ways to integrate environmental consciousness into your career.',
+    condition: (themes, subcats) => themes.includes('nature') || subcats.some(s => ['conservation', 'sustainability', 'farming_gardening', 'outdoor_adventure'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Join a local {userNaturePhrase} organization', 'Explore careers combining your skills with {userNaturePhrase}', 'Advocate for {userNaturePhrase} in your community'],
+  },
+  {
+    category: 'Creative Performance',
+    titleTemplate: 'Perform and share your {userArtPhrase}',
+    descriptionTemplate: 'Your abilities in {userArtPhrase} deserve an audience. Start sharing your work — even in small, low-pressure settings.',
+    condition: (themes, subcats) => themes.includes('arts_performance') || subcats.some(s => ['theater_acting', 'dance', 'comedy', 'music_performance', 'visual_art', 'music_creation'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Sign up for an open mic or gallery showing', 'Share your work on social media', 'Collaborate with other artists'],
+  },
+  {
+    category: 'Entrepreneurship',
+    titleTemplate: 'Explore building a business around {userBizPhrase}',
+    descriptionTemplate: 'Consider how {userBizPhrase} could be turned into a product, service, or platform. Your unique combination of interests is a business opportunity.',
+    condition: (themes, subcats) => themes.includes('business') || themes.includes('leadership') || subcats.some(s => ['entrepreneurship', 'startup_culture', 'ecommerce'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Draft a one-page business plan', 'Talk to 5 potential customers', 'Launch a minimal version of your idea'],
+  },
+  {
+    category: 'Data & Insights',
+    titleTemplate: 'Apply your analytical skills to {userDataPhrase}',
+    descriptionTemplate: 'Your ability with data is a superpower. Apply {userDataPhrase} to problems you care about — data tells stories that drive real change.',
+    condition: (themes, subcats) => themes.includes('data_analytics') || subcats.some(s => ['data_science', 'business_intelligence', 'data_engineering', 'analytics_research'].includes(s)),
+    priority: 'high',
+    specificActionTemplates: ['Start a data project on something you\'re passionate about', 'Share insights through a blog or visualization', 'Build a portfolio of data projects'],
+  },
+  {
+    category: 'Health & Wellness',
+    titleTemplate: 'Integrate {userHealthPhrase} into your career path',
+    descriptionTemplate: 'Your passion for {userHealthPhrase} can become a career pillar. There are growing opportunities in direct practice, education, or innovation.',
+    condition: (themes, subcats) => themes.includes('healthcare') || subcats.some(s => ['mental_health', 'wellness_fitness', 'public_health', 'fitness_training'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Get certified in {userHealthPhrase}', 'Start a blog or podcast about health', 'Volunteer with a health organization'],
+  },
+  {
+    category: 'Side Projects',
+    titleTemplate: 'Start a passion project combining {topPhrase1} and {topPhrase2}',
+    descriptionTemplate: 'Create something that combines {topPhrase1} with {topPhrase2}. Side projects test your Ikigai hypothesis without career-change pressure.',
+    condition: (themes) => themes.length >= 2,
+    priority: 'medium',
+    specificActionTemplates: ['Brainstorm 5 project ideas combining your interests', 'Pick one and work on it for 1 hour this weekend', 'Share your project for feedback'],
+  },
+  {
+    category: 'Community',
+    titleTemplate: 'Find your tribe around {topPhrase1}',
+    descriptionTemplate: 'Connect with communities that share your passion for {topPhrase1}. Aligned people accelerate your Ikigai journey.',
+    condition: () => true,
+    priority: 'medium',
+    specificActionTemplates: ['Join an online community focused on {topPhrase1}', 'Attend a local meetup or event', 'Start conversations with 3 people who share your interests'],
+  },
+  {
+    category: 'Financial Growth',
+    titleTemplate: 'Monetize your unique combination of {topPhrase1} and {topPhrase2}',
+    descriptionTemplate: 'Your specific combination of {topPhrase1} and {topPhrase2} is rare. Consider freelancing, consulting, or creating products at this intersection.',
+    condition: () => true,
+    priority: 'medium',
+    specificActionTemplates: ['Research freelance opportunities', 'Create a simple product or service', 'Set up a professional profile highlighting your skills'],
+  },
+  {
+    category: 'Mindful Living',
+    titleTemplate: 'Deepen your practice of {userSpiritPhrase}',
+    descriptionTemplate: 'Your connection to {userSpiritPhrase} provides grounding and wisdom. Deepen this practice for more clarity and purpose.',
+    condition: (themes, subcats) => themes.includes('spirituality') || subcats.some(s => ['meditation_mindfulness', 'philosophy', 'religious_spiritual'].includes(s)),
+    priority: 'medium',
+    specificActionTemplates: ['Establish a daily practice of at least 15 minutes', 'Join a group focused on {userSpiritPhrase}', 'Read one book on the topic this month'],
+  },
+  {
+    category: 'Design Practice',
+    titleTemplate: 'Expand your design portfolio with {userDesignPhrase}',
+    descriptionTemplate: 'Your eye for {userDesignPhrase} is valuable. Build a portfolio that showcases your unique perspective.',
+    condition: (themes, subcats) => themes.includes('design') || subcats.some(s => ['ux_design', 'ui_visual', 'product_design', 'graphic_design'].includes(s)),
+    priority: 'high',
+    specificActionTemplates: ['Complete a design project for your portfolio', 'Study designs you admire', 'Share your work online for feedback'],
+  },
+  {
+    category: 'Personal Growth',
+    titleTemplate: 'Journal about your Ikigai journey',
+    descriptionTemplate: 'Spend 10 minutes each morning reflecting on how your activities align with your Ikigai. This awareness compounds into life changes.',
+    condition: () => true,
+    priority: 'low',
+    specificActionTemplates: ['Write about what energized you today', 'Reflect on how your work connects to your purpose', 'Track which activities put you in flow'],
+  },
+];

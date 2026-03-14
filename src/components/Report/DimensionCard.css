@@ -1,0 +1,85 @@
+.dim-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 3px solid var(--dim-color);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dim-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.dim-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dim-card__icon {
+  font-size: 1.3rem;
+}
+
+.dim-card__title {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.dim-card__desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.dim-card__themes-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.dim-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dim-card__tag {
+  position: relative;
+  display: inline-block;
+  padding: 5px 12px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.dim-card__tag-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--dim-color);
+  border-radius: 1px;
+  transition: width 1s ease;
+}
+
+.dim-card__no-themes {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Prevent individual cards from splitting across PDF pages */
+.pdf-rendering .dim-card {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}

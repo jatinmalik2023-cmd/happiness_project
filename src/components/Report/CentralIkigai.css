@@ -1,0 +1,111 @@
+.central-ikigai {
+  position: relative;
+  text-align: center;
+  padding: 48px 32px;
+  background: linear-gradient(135deg, #FFF9F0, #FFECD2);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.central-ikigai__glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 112, 85, 0.15), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.central-ikigai__content {
+  position: relative;
+  z-index: 1;
+}
+
+.central-ikigai__badge {
+  display: inline-block;
+  padding: 6px 20px;
+  background: linear-gradient(135deg, var(--accent-warm), var(--accent-love));
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.central-ikigai__title {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.central-ikigai__statement {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  padding: 0;
+  border: none;
+  font-style: italic;
+}
+
+.central-ikigai__themes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.central-ikigai__theme {
+  padding: 6px 16px;
+  background: rgba(225, 112, 85, 0.12);
+  color: var(--accent-warm);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.central-ikigai__confidence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.central-ikigai__confidence-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.central-ikigai__confidence-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.central-ikigai__confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent-love));
+  border-radius: 3px;
+  transition: width 1.5s ease;
+}
+
+.central-ikigai__confidence-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-warm);
+}

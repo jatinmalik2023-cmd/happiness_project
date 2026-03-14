@@ -1,0 +1,184 @@
+.report-page {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.report-page__actions {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+}
+
+.report__header {
+  text-align: center;
+  padding: 60px 40px 40px;
+  background: var(--gradient-hero);
+}
+
+.report__header-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.report__title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.report__date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.report__section {
+  padding: 48px 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.6s ease;
+}
+
+.report__section--diagram {
+  padding: 48px 20px;
+  background: var(--bg-primary);
+}
+
+.report__section-title {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.report__dimensions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.report__footer {
+  text-align: center;
+  padding: 40px;
+  background: var(--bg-dark);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.report__footer-brand {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 700px) {
+  .report-page {
+    padding: 10px;
+  }
+
+  .report__section {
+    padding: 32px 20px;
+  }
+
+  .report__header {
+    padding: 40px 20px 30px;
+  }
+
+  .report__dimensions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   PDF export overrides — applied only during PDF capture
+   ====================================================== */
+.pdf-rendering {
+  --text-primary: #000000 !important;
+  --text-secondary: #1a1a1a !important;
+  --text-light: #333333 !important;
+  overflow: visible !important;
+}
+
+/* Single-column grids so content fits within A4 page width */
+.pdf-rendering .report__dimensions-grid,
+.pdf-rendering .intersections,
+.pdf-rendering .strengths__descriptions,
+.pdf-rendering .careers__grid {
+  grid-template-columns: 1fr !important;
+}
+
+/* Allow sections to break across pages but keep cards intact */
+.pdf-rendering .report__section {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+/* Remove all opacity reductions — full solid text in PDF */
+.pdf-rendering .strengths__desc-rank,
+.pdf-rendering .rec__number,
+.pdf-rendering .report__footer-brand {
+  opacity: 1 !important;
+}
+
+.pdf-rendering .report__footer {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.pdf-rendering .report__footer-personal {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Make section borders more visible in PDF */
+.pdf-rendering .report__section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Force dark color on all light-colored labels */
+.pdf-rendering .career-card__match-label,
+.pdf-rendering .intersection__subtitle,
+.pdf-rendering .intersection__strength-label,
+.pdf-rendering .central-ikigai__confidence-label,
+.pdf-rendering .rec__category,
+.pdf-rendering .dim-card__themes-title {
+  color: #333333 !important;
+}
+
+/* Print / PDF styles */
+@media print {
+  .report-page {
+    padding: 0;
+    background: white;
+  }
+
+  .report-page__actions {
+    display: none;
+  }
+
+  .report {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .report__section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

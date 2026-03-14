@@ -1,0 +1,117 @@
+.strengths {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.strengths__chart {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.strengths__bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.strengths__bar-label {
+  min-width: 120px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.strengths__bar-track {
+  flex: 1;
+  height: 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.strengths__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent-love));
+  border-radius: 6px;
+  width: 0;
+  animation: growWidth 1s ease forwards;
+}
+
+@keyframes growWidth {
+  to { width: var(--target-width, 100%); }
+}
+
+.strengths__bar-value {
+  min-width: 40px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-warm);
+}
+
+.strengths__descriptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.strengths__desc-card {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+}
+
+.strengths__desc-rank {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-warm);
+  opacity: 0.6;
+  min-width: 32px;
+}
+
+.strengths__desc-name {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.strengths__desc-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.strengths__evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.strengths__evidence-tag {
+  padding: 2px 8px;
+  background: rgba(225, 112, 85, 0.1);
+  color: var(--accent-warm);
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .strengths__descriptions {
+    grid-template-columns: 1fr;
+  }
+
+  .strengths__bar-label {
+    min-width: 80px;
+    font-size: 0.75rem;
+  }
+}
